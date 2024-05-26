@@ -27,7 +27,7 @@ tar -cvf /app3/chatglm-6b-pretain.tar /app3/chatglm-6b-pretain.sha256.txt  /app3
 #3. 拆分为小文件 
 #########
 #后缀为 001,002,...,640
-split -b 40m -d  --suffix-length=3 /app3/chatglm-6b-pretain.tar /app3/chatglm-6b-pretain.tar-25GB-40MB-
+split -b 40m  --numeric-suffixes=1  -d  --suffix-length=3 /app3/chatglm-6b-pretain.tar /app3/chatglm-6b-pretain.tar-25GB-40MB-
 
 #4. 在给定gitcode.net组织下创建N个仓库,仓库名是1...N
 ########
