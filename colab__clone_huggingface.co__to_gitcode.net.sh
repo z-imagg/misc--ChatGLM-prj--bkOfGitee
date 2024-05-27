@@ -24,12 +24,19 @@ for branch in $remote_branches; do
     git checkout -b $local_branch $branch
 done
 
+#所有分支共32GB
+du -h /content/chatglm-6b
+# 32G	/content/chatglm-6b/.git
+# 45G	/content/chatglm-6b
+
 #2. colab页面上点击挂载google-drive（google网盘）
 #  google网盘挂载后目录为 /content/drive/MyDrive
 
 #3. 删除git仓库的work-tree,只保留git-dir。 因为google-drive只有15GB空间
 rm -fr chatglm-6b/*
 tar -zcvf  chatglm-6b.git.tar.gz chatglm-6b/.git/
+
+
 
 #4. 包摘要上传到 google网盘
 md5sum chatglm-6b.git.tar.gz | tee /content/drive/MyDrive/chatglm-6b-data/chatglm-6b.git.tar.gz.md5sum.txt
