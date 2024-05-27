@@ -15,7 +15,11 @@ which pip
 pip install -r requirements.txt
 
 #给出demo.py中书写的目录 "THUDM/chatglm-6b-int4"
-# ln -s /app3/chatglm-6b-pretain /app3/THUDM--ChatGLM-6B/THUDM/chatglm-6b-int4
+mkdir  /app3/THUDM--ChatGLM-6B/THUDM
+ln -s /app3/chatglm-6b-pretain /app3/THUDM--ChatGLM-6B/THUDM/chatglm-6b-int4
+ls -lh /app3/THUDM--ChatGLM-6B/THUDM/
+#lrwxrwxrwx   chatglm-6b-int4 -> /app3/chatglm-6b-pretain
+
 
 python demo.py
 ```
