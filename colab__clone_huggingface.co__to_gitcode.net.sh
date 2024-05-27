@@ -31,3 +31,9 @@ split -b 1024m  --numeric-suffixes=1  -d  --suffix-length=3 /content/chatglm-6b.
 
 #7. 合并小文件为包
 cat /app3/chatglm-6b-data/chatglm-6b.git.tar.gz-1GB-??? > /app3/chatglm-6b.git.tar.gz
+
+#  签名校验正常
+cat  /app3/chatglm-6b-data/chatglm-6b.git.tar.gz.md5sum.txt 
+# 0904d96346064ccc8bd55a60b8d145b9  chatglm-6b.git.tar.gz
+(cd /app3 &&  md5sum --check  chatglm-6b-data/chatglm-6b.git.tar.gz.md5sum.txt ;)
+#chatglm-6b.git.tar.gz: OK
