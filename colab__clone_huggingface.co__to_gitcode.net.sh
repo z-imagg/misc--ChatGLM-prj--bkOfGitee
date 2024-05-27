@@ -32,8 +32,28 @@ split -b 1024m  --numeric-suffixes=1  -d  --suffix-length=3 /content/chatglm-6b.
 #7. 合并小文件为包
 cat /app3/chatglm-6b-data/chatglm-6b.git.tar.gz-1GB-??? > /app3/chatglm-6b.git.tar.gz
 
-#  签名校验正常
+#8.  签名校验正常
 cat  /app3/chatglm-6b-data/chatglm-6b.git.tar.gz.md5sum.txt 
 # 0904d96346064ccc8bd55a60b8d145b9  chatglm-6b.git.tar.gz
 (cd /app3 &&  md5sum --check  chatglm-6b-data/chatglm-6b.git.tar.gz.md5sum.txt ;)
 #chatglm-6b.git.tar.gz: OK
+
+#9. 解包
+mkdir /app3/unpack_dir
+tar -zxvf /app3/chatglm-6b-data/chatglm-6b.git.tar.gz -C /app3/unpack_dir
+
+#10. 释放.git为正常git仓库
+git clone unpack_dir/chatglm-6b /app3/chatglm-6b-pretain/
+
+ls chatglm-6b-pretain/
+# config.json               MODEL_LICENSE                     pytorch_model-00005-of-00008.bin  quantization.py
+# configuration_chatglm.py  pytorch_model-00001-of-00008.bin  pytorch_model-00006-of-00008.bin  README.md
+# ice_text.model            pytorch_model-00002-of-00008.bin  pytorch_model-00007-of-00008.bin  test_modeling_chatglm.py
+# LICENSE                   pytorch_model-00003-of-00008.bin  pytorch_model-00008-of-00008.bin  tokenization_chatglm.py
+# modeling_chatglm.py       pytorch_model-00004-of-00008.bin  pytorch_model.bin.index.json      tokenizer_config.json
+
+
+du -h  chatglm-6b-pretain/
+# 13G     chatglm-6b-pretain/.git/lfs
+# 13G     chatglm-6b-pretain/.git
+# 25G     chatglm-6b-pretain/
