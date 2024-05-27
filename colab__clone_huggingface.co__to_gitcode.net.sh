@@ -13,6 +13,17 @@
 git lfs install
 git clone https://huggingface.co/THUDM/chatglm-6b
 
+#1.B 拉取全部远程分支
+cd /content/chatglm-6b
+remote_branches=$(git branch -r | grep -v '\->' | grep -v 'master' | grep -v 'HEAD' | sed 's/^ *//')
+for branch in $remote_branches; do
+    # 提取远程分支名称（去掉远程仓库前缀）
+    local_branch=$(echo $branch | sed 's/.*\///')
+    # 创建本地跟踪分支
+    # echo "git checkout -b $local_branch $branch"
+    git checkout -b $local_branch $branch
+done
+
 #2. colab页面上点击挂载google-drive（google网盘）
 #  google网盘挂载后目录为 /content/drive/MyDrive
 
