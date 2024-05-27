@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 #【描述】   利用google的colab 克隆 25GB的华为开源大模型chatGLM预训练模型git仓库huggingface.co/THUDM/chatglm-6b 、打包仓库、拆小、小传到gitcode.net
+#              理论正确、能正常运行、但是git大文件很消耗时间、几乎可以放弃了，还不如将git替换为邮箱附件
 #【依赖】   
 #【术语】  
 #【备注】   
@@ -76,5 +77,4 @@ for (( k=1; k<=fCnt; k++ )); do
   gitArg="--work-tree ${repokD} --git-dir ${repokD}/.git"
   git $gitArg push
 done
-
 
